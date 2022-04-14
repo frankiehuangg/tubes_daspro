@@ -1,5 +1,4 @@
 # Program Files (Multifungsi)
-# Frankie Huang/16521266
 
 import functions.basic as basic
 
@@ -34,18 +33,6 @@ def csv_to_2d_array(dir):
     return array
 
 
-def append(dir, string):
-    # Menambahkan baris pada akhir file
-
-    # ALGORITMA
-    csv = open(dir, 'a')
-
-    csv.write('\n')
-    csv.write(string)
-
-    csv.close()
-
-
 def write(dir, array):
     # Membuat file baru
 
@@ -60,7 +47,10 @@ def write(dir, array):
 
     for i in range(row_length):
         for j in range(col_length):
-            string += array[i][j]+';'
+            if (j != col_length-1):
+                string += array[i][j]+';'
+            else:
+                string += array[i][j]
         string += '\n'
     
     csv = open(dir, 'w')
