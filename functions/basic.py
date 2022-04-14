@@ -1,5 +1,4 @@
 # Program Basic (Multifungsi)
-# Frankie Huang/16521266
 
 
 def string_to_array(string):
@@ -80,3 +79,27 @@ def array_to_string(array):
         string += array[i]
     
     return string
+
+
+def add_row(array_2d, array):
+    # Menambahkan array pada akhir array 2 dimensi
+
+    # KAMUS LOKAL
+    # row_length, col_length : integer
+    # new_array = array[0...col_length-1] of array[0...row_length-1] of string
+
+    # ALGORITMA
+    row_length = length(array_2d)
+    col_length = length(array_2d[0])
+
+    new_array = [['' for i in range(col_length)] for j in range(row_length+1)]
+
+    for i in range(row_length):
+        for j in range(col_length):
+            new_array[i][j] = array_2d[i][j]
+
+    new_array[-1] = array
+
+    print(new_array)
+
+    return new_array
