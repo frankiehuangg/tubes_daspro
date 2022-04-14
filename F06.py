@@ -1,6 +1,5 @@
 # Program UbahStok
 # Mengubah stok game pada files/game.csv
-# Frankie Huang/16521266
 
 import functions.files as files, functions.game as game
 

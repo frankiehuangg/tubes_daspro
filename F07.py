@@ -1,6 +1,5 @@
 # Program ListGameToko
 # Mencetak semua game di files/game.csv berdasarkan skema sorting
-# Frankie Huang/16521266
 
 import functions.files as files, functions.basic as basic
 
