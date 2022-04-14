@@ -20,7 +20,7 @@ def is_input_valid(nama_game, kategori, tahun_rilis, harga, stok_awal):
 
     try:                                            
         int(tahun_rilis)                            # Cek apakah tahun rilis bisa diubah menjadi integer (dari string)
-        if (tahun_rilis < 0):
+        if (int(tahun_rilis) < 0):
             return False
 
         int(harga)                                  # Cek apakah harga bisa diubah menjadi integer (dari string)
@@ -91,6 +91,8 @@ def tambah_game():
     array = files.csv_to_2d_array("files/game.csv")                                             # Ubah bentuk .csv ke bentuk array 2 dimensi
     id_game = next_id(array[-1][0])
 
-    string = id_game+';'+nama_game+';'+kategori+';'+tahun_rilis+';'+harga+';'+stok_awal         # Satukan semua nilai dalam bentuk string
+    append_array = [id_game,nama_game,kategori,tahun_rilis,harga,stok_awal]                     # Satukan semua nilai dalam bentuk array
 
-    files.append("files/game.csv", string)                                                       # Append string ke file csv
+    array = basic.add_row(array, append_array)                                                  # Append array ke array 2 dimensi
+
+    return array
