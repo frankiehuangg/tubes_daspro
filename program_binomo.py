@@ -7,12 +7,16 @@ user_function = ["buy_game", "list_game", "search_my_game", "riwayat"]
 
 def valid_role(function, role):
     if (role == "admin" and function in admin_function):
-        return True
+        for i in range(5):
+            if (admin_function[i] == function):
+                return True
     else:
         print("Maaf, anda tidak memiliki izin untuk menjalankan perintah berikut. Mintalah ke administrator untuk melakukan hal tersebut.")
     
     if (role == "user" and function in user_function):
-        return True
+        for i in range(4):
+            if (user_function[i] == function):
+                return True
     else:
         print("Maaf, anda harus menjadi user untuk melakukan hal tersebut.")
     
