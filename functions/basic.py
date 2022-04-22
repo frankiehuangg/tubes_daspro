@@ -100,6 +100,4 @@ def add_row(array_2d, array):
 
     new_array[-1] = array
 
-    print(new_array)
-
     return new_array

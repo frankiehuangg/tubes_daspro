@@ -4,7 +4,6 @@
 
 import functions.basic as basic
 
-
 def check_id_game(array, id_game):
     # Mengecek apakah ID yang dimasukkan valid dan terdapat pada file
 

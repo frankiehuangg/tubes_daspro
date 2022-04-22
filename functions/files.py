@@ -19,7 +19,7 @@ def csv_to_2d_array(dir):
 
     lines_length = basic.length(lines)
     line_length = basic.length(lines[0])
-    col = 0
+    col = 1
     for i in range(line_length):
         if (lines[0][i] == ';'):
             col += 1
@@ -29,7 +29,7 @@ def csv_to_2d_array(dir):
     for i in range(lines_length):
         for j in range(col):
             array[i][j] = read_cell(lines[i], j)
-    
+
     return array
 
 
