@@ -65,7 +65,7 @@ def next_id(string):
     return string
 
 
-def tambah_game():
+def tambah_game(array):
     # Menambahkan game yang diinput pada files/game.csv
 
     # KAMUS LOKAL
@@ -87,7 +87,6 @@ def tambah_game():
         harga = input("Masukkan harga: ")
         stok_awal = input("Masukkan stok awal: ")
 
-    array = files.csv_to_2d_array("files/game.csv")                                             # Ubah bentuk .csv ke bentuk array 2 dimensi
     id_game = next_id(array[-1][0])
 
     append_array = [id_game,nama_game,kategori,tahun_rilis,harga,stok_awal]                     # Satukan semua nilai dalam bentuk array

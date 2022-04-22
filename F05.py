@@ -31,7 +31,7 @@ def is_input_valid(array, id_game, tahun_rilis, harga):
     return row
 
 
-def ubah_game():
+def ubah_game(array):
     # Mengembalikan array berupa data pada files/game.csv yang sudah diubah
 
     # KAMUS LOKAL
@@ -40,14 +40,11 @@ def ubah_game():
     # row : integer
 
     # ALGORITMA
-    array = files.csv_to_2d_array("files/game.csv")
-
     id_game = input("Masukkan ID game: ")
     nama_game = input("Masukkan nama game: ")
     kategori = input("Masukkan kategori: ")
     tahun_rilis = input("Masukkan tahun rilis: ")
     harga = input("Masukkan harga: ")
-
 
     if (not is_input_valid(array, id_game, tahun_rilis, harga)):    # Jika input tidak valid, terminasi program 
         return

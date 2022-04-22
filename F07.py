@@ -50,7 +50,7 @@ def sort(array, col, ascending):
                     array[i] = temp
 
 
-def list_game_toko():
+def list_game_toko(array):
     # Mencetak array 2 dimensi berdasarkan skema sorting
 
     # KAMUS LOKAL
@@ -58,8 +58,6 @@ def list_game_toko():
     # sorting : string
 
     # ALGORITMA
-    array = files.csv_to_2d_array("files/game.csv")
-
     sorting = input("Skema sorting: ").lower()
 
     if (sorting == "harga+"):                           # Urutkan harga ascending

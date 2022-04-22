@@ -4,7 +4,7 @@
 import functions.files as files, functions.game as game
 
 
-def ubah_stok():
+def ubah_stok(array):
     # Mengembalikan array berupa data stok pada files/game.csv yang sudah diubah
 
     # KAMUS LOKAL
@@ -13,8 +13,6 @@ def ubah_stok():
     # row, stok, jumlah : integer
 
     # ALGORITMA
-    array = files.csv_to_2d_array("files/game.csv")
-
     id_game = input("Masukkan ID game: ")
     
     if (not game.check_id_game(array, id_game)):                                         # Jika hasil cek mereturn 0, hentikan program
