@@ -1,8 +1,7 @@
 # Program CariGamediToko
 # Mencetak game di toko yang memenuhi kriteria input
 
-import functions.basic as basic
-
+import functions.basic as basic, functions.files as files
 
 def check_column(array, input, index):
     # Mengecek apakah nilai input sama dengan nilai di array per baris
@@ -22,18 +21,24 @@ def check_column(array, input, index):
 
 def find_game(array, id_input, nama_input, harga_input, kategori_input, tahun_input):
     # Mengecek apakah input diberi (bukan kosong)
-
+    global toko_kosong
+    toko_kosong = True
     # ALGORITMA
     if (id_input != ''):                                        # Cek apakah input id kosong
         array = check_column(array, id_input, 0)
+        toko_kosng = False
     if (nama_input != ''):                                      # Cek apakah input nama kosong
         array = check_column(array, nama_input, 1)
+        toko_kosong = False
     if (kategori_input != ''):                                  # Cek apakah input kategori kosong
         array = check_column(array, kategori_input, 2)
+        toko_kosong = False
     if (tahun_input != ''):                                     # Cek apakah input tahun kosong
         array = check_column(array, tahun_input, 3)
+        toko_kosong = False
     if (harga_input != ''):                                     # Cek apakah input harga kosong
         array = check_column(array, harga_input, 4)
+        toko_kosong = False
     
     return array
 
@@ -62,9 +67,50 @@ def search_game_at_store(game_array):
     row_length = basic.length(filtered_array)
     num = 1
 
-    print("Daftar game pada toko yang memenuhi kriteria:")
+    print("-"*103)
+    print(" "*46 +"GAME STORE"+ " "*46)
+    if basic.length(filtered_array)==0 :
+        print("-"*103)
+        # cek apakah di toko ada game
+        if toko_kosong == False : 
+            print(" "*38 + "\nMaaf, Game tidak tersedia!" + " "*38)
+        else :
+            print(" "*25+"\nTidak ada Game di GAME STORE yang memenuhi kriteria!" + " "*25)
+    # print tabel daftar game
+    else :
+        # id;nama;kategori;tahun_rilis;harga;stok;
+        print("-"*103)
+        print("| NO  ", end="")
+        print("| ID GAME |", end="")
+        print(" "*16 +" NAMA"+ " "*16, end="")
+        print("|"+" "*4 +" KATEGORI"+ " "*4, end="")
+        print("| TAHUN RILIS ", end="")
+        print("| HARGA ", end="")
+        print("| STOK  |")
+        print("-"*103)
+        row_length = basic.length(filtered_array)
+        for i in range(row_length):
+            if (filtered_array[i][0] != ''):
+                for j in range(6):
+                    if j == 0 :
+                        n = 8
+                        print("| "+ str(num) +"."+" "*(3-basic.length(str(num))) + "|", end="")
+                    elif j==1:
+                        n = 36
+                    elif j==2 :
+                        n = 16
+                    elif j==3:
+                        n = 12
+                    elif j==4 :
+                        n = 6
+                    else :
+                        n = 6
+                    elemen = filtered_array[i][j]
+                    print(" "+ elemen +" "*(n-basic.length(elemen))+ "|", end="")
+                num +=1
+            print("")
+        print("-"*103)
 
-    for i in range(row_length):
-        if (filtered_array[i][0] != ''):                        # Cetak row yang bagian ID nya tidak kosong
-            print(str(num) + ". " + filtered_array[i][0] + " | " + filtered_array[i][1] + " | " + filtered_array[i][4] + " | " + filtered_array[i][2] + " | " + filtered_array[i][3] + " | " + filtered_array[i][5])
-            num += 1
+game_array = files.csv_to_2d_array("files/game.csv")
+print(game_array)
+search_game_at_store(game_array)
