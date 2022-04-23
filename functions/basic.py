@@ -90,7 +90,7 @@ def add_row(array_2d, array):
 
     # ALGORITMA
     row_length = length(array_2d)
-    col_length = length(array_2d[0])
+    col_length = length(array)
 
     new_array = [['' for i in range(col_length)] for j in range(row_length+1)]
 
