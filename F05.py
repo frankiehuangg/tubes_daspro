@@ -47,7 +47,7 @@ def ubah_game(array):
     harga = input("Masukkan harga: ")
 
     if (not is_input_valid(array, id_game, tahun_rilis, harga)):    # Jika input tidak valid, terminasi program 
-        return
+        return array
     
     row = is_input_valid(array, id_game, tahun_rilis, harga)
 
