@@ -47,11 +47,11 @@ def check_cond(board):
             return False
 
     if (board[0][0] == board[1][1] and board[0][0] == board[2][2] and board[0][0] != '#'):                  # Cek secara diagonal \
-        print("Pemain “"+board[i][0]+"” menang.")
+        print("Pemain “"+board[0][0]+"” menang.")
         return False
     
     if (board[0][2] == board[1][1] and board[0][0] == board[2][0] and board[0][2] != '#'):                  # Cek secara diagonal /
-        print("Pemain “"+board[i][0]+"” menang.")
+        print("Pemain “"+board[0][2]+"” menang.")
         return False
 
     all_filled = True
@@ -84,6 +84,7 @@ def tictactoe():
 
         print_board(board)
 
+        print(move)
         if (move % 2 == 0):
             print("Giliran pemain “X”:")
         else:
