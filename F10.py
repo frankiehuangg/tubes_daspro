@@ -1,23 +1,23 @@
 import functions.basic as basic,  functions.files as files
 
-def list_user_game(user_id, riwayat_array):
-    global jumlah_game
-    jumlah_game = 0
-    count = -1
+def list_user_game(user_id, riwayat_array, game_array):
     # urutan : no, ID game, nama game, kategori, tahun rilis, tahun beli, harga
+    jumlah_game = 0
+    count = 0
     Riwayat = riwayat_array
-    Game = files.csv_to_2d_array("files/game.csv")
+    Game = game_array
+
     for row in Riwayat :
         user_ID = row[3]
         if user_ID == user_id :
             jumlah_game += 1
-    daftar_game_user = [["" for i in range(7)] for i in range(jumlah_game)]
+    daftar_game_user = [["" for i in range(7)] for j in range(jumlah_game)]
+
     for row in Riwayat :
         user_ID = row[3]
         riwayat_game_id = row[0]
         game_tahun_beli = row[4]
         if user_ID == user_id :
-            count += 1
             for line in Game :
                 game_id = line[0]
                 game_nama = line[1]
@@ -33,6 +33,8 @@ def list_user_game(user_id, riwayat_array):
                     daftar_game_user[count][5] = game_tahun_beli
                     daftar_game_user[count][6] = game_harga
                     break
+            count += 1
+
     return daftar_game_user
 
 def remove_row(array_2d, row_number):
@@ -48,32 +50,41 @@ def remove_row(array_2d, row_number):
                 new_array_2d[i-1][j] = array_2d[i][j]
     return new_array_2d
 
-def search_my_game(user_id, riwayat_array):
-    game_ada = True
+def search_my_game(user_id, riwayat_array, game_array):
     id_game = input("Masukkan ID Game : ")
     release_year = input("Masukkan Tahun Rilis Game : ")
-    daftar_game_user = list_user_game(user_id, riwayat_array)
-    new_daftar_game_user = daftar_game_user
+
+    if id_game == '' and release_year == '':
+        print("Input tidak valid!")
+        return
+
+    daftar_game_user = list_user_game(user_id, riwayat_array, game_array)
+
+    jumlah_game = basic.length(daftar_game_user)
+
+    new_daftar_game_user = []
     for i in range(basic.length(daftar_game_user)) :
         game_ID = daftar_game_user[i][1]
         game_tahun_rilis = daftar_game_user[i][4]
-        if id_game != "" : 
-            # mengisi keduanya
-            if release_year != "" : 
-                if id_game != game_ID and game_tahun_rilis != release_year :
-                    new_daftar_game_user = remove_row(daftar_game_user, i)
-            # hanya mengisi id_game    
-            else :
-                if id_game != game_ID :
-                    new_daftar_game_user = remove_row(daftar_game_user, i)     
-        else : 
-            # tidak mengisi keduanya
-            if release_year == "" :
-                game_ada = False
-            # hanya mengisi tahun_rilis
-            else :
-                if game_tahun_rilis != release_year :
-                    new_daftar_game_user = remove_row(daftar_game_user, i)
+
+        # mengisi keduanya 
+        if id_game != '' and game_tahun_rilis != '' and id_game == game_ID and game_tahun_rilis == release_year:
+            new_row = daftar_game_user[i]
+            new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
+            continue
+
+        # hanya mengisi id game
+        elif id_game != '' and game_tahun_rilis == '' and id_game == game_ID :
+            new_row = daftar_game_user[i]
+            new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
+            continue
+        
+        # hanya mengisi tahun rilis
+        elif id_game == '' and  release_year != '' and game_tahun_rilis == release_year :
+            new_row = daftar_game_user[i]
+            new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
+            continue
+
     print("-"*113)
     print(" "*52 +"GAME KAMU"+ " "*52)
     print(" "*93 + "ID GAME : "+ id_game + " "*3)
@@ -81,8 +92,8 @@ def search_my_game(user_id, riwayat_array):
     if basic.length(new_daftar_game_user)==0 :
         print("-"*113)
         # cek apakah user sudah memiliki game
-        if game_ada == False : 
-            print("\nMaaf, kamu tidak memiliki game! yuk beli game dulu dengan ketik perintah 'buy_game'")
+        if jumlah_game == 0 : 
+            print("\nMaaf, kamu tidak memiliki game! Yuk beli game dulu dengan ketik perintah 'buy_game'!")
         else :
             print("\nTidak ada Game di inventory-mu yang memenuhi kriteria!")
     # print tabel daftar game
