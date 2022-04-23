@@ -13,9 +13,6 @@ def is_input_valid(nama_game, kategori, tahun_rilis, harga, stok_awal):
     
     if (basic.length(kategori) == 0):               # Cek apakah panjang kategori 0 (tidak ada input)
         return False 
-    
-    if (int(tahun_rilis) < 2000):                   # Cek apakah tahun rilis < 2000
-        return False
 
     try:                                            
         int(tahun_rilis)                            # Cek apakah tahun rilis bisa diubah menjadi integer (dari string)
