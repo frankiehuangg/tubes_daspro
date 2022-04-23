@@ -24,6 +24,7 @@ def register(array):                                                            
     array = basic.add_row(array, arraycsv)                                                  # Menambah data baru untuk baris terakhir user.csv
     
     files.write("files/user.csv", array)                                                    # Menuliskan hasilnya pada user.csv
+    print("Username", user, "telah berhasil register ke dalam “Binomo”.")
 
 def validasi(user):                                                                         # Validasi apakah username sesuai dengan syarat
     user_len = basic.length(user)                                                           # Menghitung panjang username
