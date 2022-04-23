@@ -10,7 +10,6 @@ def load_data():
     else :
         if os.path.exists(args.folder):
             print ("Loading…")
-            print ("")
             print ("Selamat datang di antarmuka “Binomo”")
             return args.folder            
         else :
