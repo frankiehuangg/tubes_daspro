@@ -1,3 +1,4 @@
 id;nama;kategori;tahun_rilis;harga;stok
-GAME001;Among Us;Team;2019;20000;120
-GAME002;Dota 3;MOBA;2020;0;100
+GAME001;AmongUs;Team;2019;20000;10120
+GAME002;Dota 3;MOBA;2020;0;99
+GAME003;Amogus;Sus Simulator;2012;10000;99
