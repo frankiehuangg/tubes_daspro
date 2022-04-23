@@ -5,11 +5,11 @@ def exit(game_array, kepemilikan_array, riwayat_array, user_array, is_saved):
         program = True
         while (program == True) :
             akhiri = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)").lower()
-            while ((akhiri != 'y') or (akhiri != 'n')):
+            while ((akhiri != 'y') and (akhiri != 'n')):
                 akhiri = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n)").lower()
-            if ((akhiri == 'y') or (akhiri == 'Y')):
+            if (akhiri == 'y'):
                 F16.save(game_array, kepemilikan_array, riwayat_array, user_array)    
                 break 
-            elif ((akhiri == 'n') or (akhiri == 'N')):
+            elif (akhiri == 'n'):
                 break
     return
