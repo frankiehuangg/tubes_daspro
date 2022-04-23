@@ -7,7 +7,7 @@ def login(array):
 
     pasw = B01.encrypt(pasw)
 
-    idx = cek_user(user, pasw)                                          # Login valid
+    idx = cek_user(user, pasw, array)                                   # Login valid
 
     if idx == -1:                                                       # Jika username & password tidak ditemukan pada user.csv, login invalid
         print("Password atau username salah atau tidak ditemukan.")
@@ -21,12 +21,19 @@ def login(array):
     return [id, role]
 
 
-def cek_user(user, pasw):                                               # Mengecek username & password sudah terdaftar pada user.csv atau belum
-    array = files.csv_to_2d_array("files/user.csv")                     # Mengubah file user.csv menjadi array
-
+def cek_user(user, pasw, array):                                        # Mengecek username & password sudah terdaftar pada user.csv atau belum
     rows = basic.length(array)                                          # Menghitung jumlah baris pada user.csv
     for i in range(1, rows):                                            # Jika username & password terdaftar pada user.csv, login valid
         if user == array[i][1] and pasw == array[i][3]:
             return i
 
     return -1
+
+def relog(array):
+    user_input = input("Apakah anda ingin login ke akun lain? (y/n)").lower()
+    while (user_input != 'y' and user_input != 'n'):
+        user_input = input("Apakah anda ingin login ke akun lain? (y/n)").lower()
+    
+    if (user_input == 'y'):
+        return login(array)
+    return
