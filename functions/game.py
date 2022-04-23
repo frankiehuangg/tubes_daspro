@@ -33,3 +33,11 @@ def check_id_game(array, id_game):
     
     print("Tidak ada game dengan ID tersebut!")
     return 0
+    
+def print_long_string(string, max_len):
+    # Mencetak ... pada akhir string jika string terlalu panjang
+
+    # ALGORITMA
+    for i in range(max_len-3):
+        print(string[i], end='')
+    print('...', end=" | ")
