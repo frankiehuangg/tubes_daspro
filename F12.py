@@ -8,15 +8,15 @@ def topup(array):
 
     if idx == -1:                                                                   # Jika username & password tidak ditemukan pada user.csv, login invalid
         print("Username", user, "tidak ditemukan.")
-        return
+        return array
     
     nama = array[idx][2]                                                            # Mencari nama user
     saldo = int(array[idx][5])                                                      # Mencari saldo user (semua role adalah user, kecuali jika diganti menjadi admin)
     
-    if saldo_valid(saldo, saldo_input) == False:                                    # Saldo akhir invalid
+    if not saldo_valid(saldo, saldo_input):                                    # Saldo akhir invalid
         print("Masukan tidak valid.")                                               # Print apabila topup tidak berhasil
-        return
-    
+        return array
+
     array[idx][5] = str(saldo + saldo_valid(saldo, saldo_input))                    # Jumlah saldo akhir
     print("Top up berhasil. Saldo", nama, "bertambah menjadi", array[idx][5]+".")   # Print apabila topup berhasil
     
@@ -34,5 +34,5 @@ def cek_user(user):                                                             
 
 def saldo_valid(saldo, saldo_input):                                                # Mengecek apakah saldo akhir valid
     if saldo + saldo_input < 0:                                                     # Jika saldo akhir bernilai negatif, saldo akhir invalid
-        return -1
+        return 0
     return saldo + saldo_input

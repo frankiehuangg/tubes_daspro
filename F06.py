@@ -13,10 +13,11 @@ def ubah_stok(array):
     # row, stok, jumlah : integer
 
     # ALGORITMA
+    print(array)
     id_game = input("Masukkan ID game: ")
     
-    if (not game.check_id_game(array, id_game)):                                         # Jika hasil cek mereturn 0, hentikan program
-        return
+    if (not game.check_id_game(array, id_game)):                                    # Jika hasil cek mereturn 0, hentikan program
+        return array
     
     row = game.check_id_game(array, id_game)
     nama_game = array[row][1]
@@ -26,11 +27,11 @@ def ubah_stok(array):
         jumlah = int(input("Masukkan jumlah: "))
     except:
         print("Jumlah tidak valid!")
-        return
+        return array
 
     if (stok+jumlah < 0):                                                           # Jika hasil perubahan bernilai negatif, hentikan program
         print("Stok game "+nama_game+" gagal dikurangi karena stok kurang. Stok sekarang: "+str(stok)+" (< "+str(abs(jumlah))+')')
-        return
+        return array
 
     array[row][5] = str(stok+jumlah)
 
