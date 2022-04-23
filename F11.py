@@ -110,7 +110,3 @@ def search_game_at_store(game_array):
                 num +=1
             print("")
         print("-"*103)
-
-game_array = files.csv_to_2d_array("files/game.csv")
-print(game_array)
-search_game_at_store(game_array)
