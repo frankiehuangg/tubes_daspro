@@ -1,8 +1,7 @@
 # Program ListGameToko
 # Mencetak semua game di files/game.csv berdasarkan skema sorting
 
-import functions.files as files, functions.basic as basic
-
+import functions.files as files, functions.basic as basic, functions.game as game
 
 def print_array(array):
     # Mencetak array 2 dimensi
@@ -12,18 +11,33 @@ def print_array(array):
 
     # ALGORITMA
     row_length = basic.length(array)
-    col_length = basic.length(array[0])
-    num = 1
 
-    for i in range(1,row_length):
-        print(str(num) + ". ", end='')
-        for j in range(1,col_length):
-            if (j == col_length-1):
-                print(array[i][j])
-                continue
-            print(array[i][j], end="\t|")
-        num += 1
+    max_name_len = 20
+    max_cat_len = 10
+    max_prc_len = 6
 
+    for i in range(1, row_length):
+        name_tab_amt = max_name_len - basic.length(array[i][1])
+        if (name_tab_amt >= 0):
+            print(array[i][1] + ' ' * name_tab_amt, end=" | ")
+        else:
+            game.print_long_string(array[i][1], max_name_len)
+
+        cat_tab_amt = max_cat_len - basic.length(array[i][2])
+        if (cat_tab_amt >= 0):
+            print(array[i][2] + ' ' * cat_tab_amt, end=" | ")
+        else:
+            game.print_long_string(array[i][2], max_cat_len)
+
+        print(array[i][3], end=" | ")
+
+        prc_tab_amt = max_prc_len - basic.length(array[i][4])
+        if (prc_tab_amt >= 0):
+            print(array[i][4] + ' ' * prc_tab_amt, end=" | ")
+        else:
+            game.print_long_string(array[i][4], max_prc_len)
+
+        print(array[i][5])
     
 def sort(array, col, ascending):
     # Mengurutkan array berdasarkan kondisi sorting
@@ -68,5 +82,8 @@ def list_game_toko(array):
         sort(array, 3, True)
     elif (sorting == "tahun-"):                         # Urutkan tahun descending
         sort(array, 3, False)
+    else:
+        print("Skema input tidak valid!")
+        return
 
     print_array(array)
