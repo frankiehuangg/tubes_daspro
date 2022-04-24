@@ -1,8 +1,12 @@
+# Program Membeli Game
+# menambahkan game yang berada di toko (game_array) menjadi kepunyaan user dengan menambahkan data di riwayat(riwayat_array) dan kepemilikan (kepemilikan_array)
+
 import functions.files as files, functions.basic as basic
 import datetime as dt
 
 from functions.game import check_id_game
 
+# fungsi untuk mengecek apakah user sudah memiliki game yang diinput
 def cek_gameUser(id_game, user_id, kepemilikan_array):
     punya = False
     kepemilikan = kepemilikan_array
@@ -14,6 +18,7 @@ def cek_gameUser(id_game, user_id, kepemilikan_array):
             break
     return punya
 
+# fungsi untuk mengecek apakah saldo user mencukupi untuk memebli game yang diinput
 def cek_saldo(user_id, harga, user_array):
     for row in user_array :
         saldo = row[5]
@@ -26,6 +31,7 @@ def cek_saldo(user_id, harga, user_array):
             row[5] = str(int(row[5]) - int(harga))
             return tidak_cukup
     
+# fungsi untuk mengecek apakah game yang diinput tersedia di toko atau tidak
 def cek_stok(id_game, game_array):
     habis = True
     array_length = basic.length(game_array)
@@ -41,6 +47,7 @@ def cek_stok(id_game, game_array):
 
     return habis
 
+# fungsi untuk menambahkan game yang diinput kedalam kepemilikan_array dan riwayat_array setelah semua pengecekan
 def buy_game(game_array, kepemilikan_array, riwayat_array, user_array, user_id):
     id_game = input("Masukkan ID Game: ")
 
