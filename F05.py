@@ -1,4 +1,4 @@
-# Program UbahGame
+    # Program UbahGame
 # Mengganti keterangan game pada files/game.csv
 
 import functions.files as files, functions.game as game
@@ -15,7 +15,7 @@ def is_input_valid(array, id_game, tahun_rilis, harga):
         return 0
     
     try:
-        (tahun_rilis == "" or int(tahun_rilis) < 2000)              # Cek apakah tahun_rilis dapat diubah menjadi integer (jika input tidak kosong)
+        (tahun_rilis == "" or int(tahun_rilis) < 0)              # Cek apakah tahun_rilis dapat diubah menjadi integer (jika input tidak kosong)
     except:
         print("Tahun rilis tidak valid!")
         return 0

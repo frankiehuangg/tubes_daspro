@@ -13,7 +13,6 @@ def ubah_stok(array):
     # row, stok, jumlah : integer
 
     # ALGORITMA
-    print(array)
     id_game = input("Masukkan ID game: ")
     
     if (not game.check_id_game(array, id_game)):                                    # Jika hasil cek mereturn 0, hentikan program

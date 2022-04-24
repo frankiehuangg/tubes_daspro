@@ -54,33 +54,36 @@ def search_my_game(user_id, riwayat_array, game_array):
     id_game = input("Masukkan ID Game : ")
     release_year = input("Masukkan Tahun Rilis Game : ")
 
-    if id_game == '' and release_year == '':
-        print("Input tidak valid!")
-        return
-
     daftar_game_user = list_user_game(user_id, riwayat_array, game_array)
 
     jumlah_game = basic.length(daftar_game_user)
 
     new_daftar_game_user = []
+
+
     for i in range(basic.length(daftar_game_user)) :
         game_ID = daftar_game_user[i][1]
         game_tahun_rilis = daftar_game_user[i][4]
 
         # mengisi keduanya 
-        if id_game != '' and game_tahun_rilis != '' and id_game == game_ID and game_tahun_rilis == release_year:
+        if id_game != '' and release_year != '' and id_game == game_ID and game_tahun_rilis == release_year:
             new_row = daftar_game_user[i]
             new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
             continue
 
         # hanya mengisi id game
-        elif id_game != '' and game_tahun_rilis == '' and id_game == game_ID :
+        if id_game != '' and release_year == '' and id_game == game_ID :
             new_row = daftar_game_user[i]
             new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
             continue
         
         # hanya mengisi tahun rilis
-        elif id_game == '' and  release_year != '' and game_tahun_rilis == release_year :
+        if id_game == '' and  release_year != '' and game_tahun_rilis == release_year :
+            new_row = daftar_game_user[i]
+            new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
+            continue
+
+        if id_game == '' and release_year == '':
             new_row = daftar_game_user[i]
             new_daftar_game_user = basic.add_row(new_daftar_game_user, new_row)
             continue

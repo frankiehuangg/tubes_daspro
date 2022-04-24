@@ -5,8 +5,14 @@ def riwayat(array, user_id):
 
     max_name_len = 20
     max_prc_len = 6
+
+    num = 0
+
+    for i in range(1, rows):
+        if (array[i][3] == user_id):
+            num += 1
     
-    if rows == 1:                                                                                       # Jika baris hanya 1, user tidak punya riwayat pembelian game
+    if num == 0:                                                                                       # Jika baris hanya 1, user tidak punya riwayat pembelian game
         print("Maaf, kamu tidak ada riwayat pembelian game. Ketik perintah beli_game untuk membeli.")
         return
     

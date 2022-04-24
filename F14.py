@@ -1,4 +1,4 @@
-def helpadmin():
+def helpadmin(): #Mengeluarkan menu help untuk admin
     print ('==========================Menu Bantuan Bagi Admin==========================')
     print ('1. register             - Untuk melakukan registrasi user baru')
     print ('2. login                - Untuk melakukan login ke dalam sistem')
@@ -15,7 +15,7 @@ def helpadmin():
     print ('13. exit                - Untuk menghentikan program')
     return
 
-def helpuser() :
+def helpuser() : #Mengeluarkan menu help untuk user
     print ('==========================Menu Bantuan Bagi User==========================')
     print ('1. login                - Untuk melakukan login ke dalam sistem')
     print ('2. list_game_toko       - Untuk melihat list game yang dijual pada toko')
@@ -31,7 +31,8 @@ def helpuser() :
     print ('11. exit                - Untuk menghentikan program')
     return
     
-def help(role) :
+def help(role) : 
+    #Program utama yang memanggil prosedur lain sesuai dengan status pengguna (admin/user)
     if (role == 'user') :
         helpuser()
     else:

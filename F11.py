@@ -12,7 +12,7 @@ def check_column(array, input, index):
     # ALGORITMA
     row_length = basic.length(array)
 
-    for i in range(row_length):
+    for i in range(1, row_length):
         if (array[i][index] != input):                          # Ubah baris id menjadi kosong jika tidak sesuai kriteria
             array[i][0] = ''
     
@@ -26,7 +26,7 @@ def find_game(array, id_input, nama_input, harga_input, kategori_input, tahun_in
     # ALGORITMA
     if (id_input != ''):                                        # Cek apakah input id kosong
         array = check_column(array, id_input, 0)
-        toko_kosng = False
+        toko_kosong = False
     if (nama_input != ''):                                      # Cek apakah input nama kosong
         array = check_column(array, nama_input, 1)
         toko_kosong = False
@@ -64,6 +64,7 @@ def search_game_at_store(game_array):
     tahun_input = input("Masukkan Tahun Rilis Game: ")
 
     filtered_array = find_game(game_array, id_input, nama_input, harga_input, kategori_input, tahun_input)
+    filtered_array[0][0] = ''
     row_length = basic.length(filtered_array)
     num = 1
 

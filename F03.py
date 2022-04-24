@@ -7,7 +7,7 @@ def login(array):
 
     pasw = B01.encrypt(pasw)
 
-    idx = cek_user(user, pasw, array)                                   # Login valid
+    idx = cek_user(user, array)                                   # Login valid
 
     if idx == -1:                                                       # Jika username & password tidak ditemukan pada user.csv, login invalid
         print("Password atau username salah atau tidak ditemukan.")
@@ -21,10 +21,10 @@ def login(array):
     return [id, role]
 
 
-def cek_user(user, pasw, array):                                        # Mengecek username & password sudah terdaftar pada user.csv atau belum
+def cek_user(user, array):                                        # Mengecek username & password sudah terdaftar pada user.csv atau belum
     rows = basic.length(array)                                          # Menghitung jumlah baris pada user.csv
     for i in range(1, rows):                                            # Jika username & password terdaftar pada user.csv, login valid
-        if user == array[i][1] and pasw == array[i][3]:
+        if user == array[i][1]:
             return i
 
     return -1
