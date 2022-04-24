@@ -35,7 +35,7 @@ def list_user_game(user_id, riwayat_array):
     global jumlah_game
     jumlah_game = 0
     count = -1
-    # urutan : no, ID game, nama game, kategori, tahun rilis, tahun beli, harga
+
     Game = files.csv_to_2d_array("files/game.csv")
     for row in riwayat_array :
         user_ID = row[3]
@@ -56,6 +56,8 @@ def list_user_game(user_id, riwayat_array):
                 game_kategori = line[2]
                 game_tahun_rilis = line[3]
                 game_harga = line[4]
+                
+                # urutan : no, ID game, nama game, kategori, tahun rilis, tahun beli, harga
                 if game_id == riwayat_game_id :
                     daftar_game_user[count][0] = str(count+1) + "."
                     daftar_game_user[count][1] = game_id
